@@ -6,6 +6,24 @@ The application demonstrates how smartphone sensors can be used to detect real-w
 
 ---
 
+## Architectural Flow
+
+![Architecture](assets/screenshots/01_architecture.png)
+
+---
+
+## Screenshots
+
+| Home                                           | Drive                                            |
+| ---------------------------------------------- | ------------------------------------------------ |
+| ![home](assets/screenshots/02_homeScreen.jpeg) | ![drive](assets/screenshots/03_driveScreen.jpeg) |
+
+| Summary                                           | Profile                                            |
+| ------------------------------------------------- | -------------------------------------------------- |
+| ![home](assets/screenshots/04_summaryScreen.jpeg) | ![drive](assets/screenshots/05_profileScreen.jpeg) |
+
+---
+
 ## 📱 Screens
 
 ### Home
