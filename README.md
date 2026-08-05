@@ -1,50 +1,353 @@
-# Welcome to your Expo app 👋
+# 🚗 SafeDrive
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile application built with **React Native (Expo)** that analyzes a user's driving behavior using the device's motion sensors and generates a **Driving Safety Score**.
 
-## Get started
+The application demonstrates how smartphone sensors can be used to detect real-world driving events such as harsh braking, sharp acceleration, sharp turns, aggressive steering, excessive device movement, and possible phone handling while driving.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 📱 Screens
 
-2. Start the app
+### Home
 
-   ```bash
-   npx expo start
-   ```
+- Start a new driving session
+- View previous driving sessions
+- Access user profile
 
-In the output, you'll find options to open the app in a
+### Drive
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Live driving timer
+- Real-time safety score
+- Live event detection
+- Device motion monitoring
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Summary
 
-## Get a fresh project
+- Final driving score
+- Safety rating
+- Drive duration
+- Event breakdown
 
-When you're ready, run:
+### History
 
-```bash
-npm run reset-project
+- List of previous driving sessions
+- Previous scores
+- Previous durations
+- Previous ratings
+
+---
+
+# ✨ Features
+
+- Start / End Drive
+- Real-time sensor data collection
+- Device Motion integration
+- Accelerometer data
+- Gyroscope data
+- Real-time event detection
+- Driving score calculation
+- Session summary
+- Driving history
+- Clean and minimal UI
+
+---
+
+# 📊 Events Detected
+
+The application detects the following driving events.
+
+| Event                     | Penalty |
+| ------------------------- | ------- |
+| Harsh Braking             | -5      |
+| Harsh Acceleration        | -5      |
+| Sharp Turn                | -3      |
+| Aggressive Steering       | -4      |
+| Excessive Device Movement | -3      |
+| Phone Handling            | -10     |
+
+---
+
+# 🧠 Event Detection Logic
+
+The application continuously receives motion data from the device.
+
+```
+Device Motion
+        ↓
+Raw Sensor Data
+        ↓
+Event Detection
+        ↓
+Driving Event
+        ↓
+Driving Score
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Each sensor reading is evaluated against predefined thresholds.
 
-## Learn more
+Example:
 
-To learn more about developing your project with Expo, look at the following resources:
+- Large negative acceleration → Harsh Brake
+- Large positive acceleration → Harsh Acceleration
+- High angular velocity → Sharp Turn
+- Sudden device movement → Phone Handling
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+# ⭐ Driving Score
 
-Join our community of developers creating universal apps.
+Every driving session starts with a score of:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```
+100
+```
+
+Whenever an unsafe event is detected, points are deducted.
+
+Example
+
+```
+Start
+
+100
+
+↓
+
+Harsh Brake
+
+95
+
+↓
+
+Sharp Turn
+
+92
+
+↓
+
+Phone Handling
+
+82
+```
+
+The final score is converted into a safety rating.
+
+| Score    | Rating    |
+| -------- | --------- |
+| 90 - 100 | Excellent |
+| 75 - 89  | Good      |
+| 60 - 74  | Average   |
+| 40 - 59  | Poor      |
+| Below 40 | Unsafe    |
+
+---
+
+# 🛠 Tech Stack
+
+- React Native
+- Expo
+- Expo Router
+- Expo Sensors
+- TypeScript
+
+---
+
+# 📂 Project Structure
+
+```
+app/
+│
+├── _layout.tsx
+├── index.tsx          // Home Screen
+├── drive.tsx          // Driving Session
+├── summary.tsx        // Drive Summary
+├── history.tsx        // Previous Sessions
+└── profile.tsx
+
+hooks/
+│
+└── useDeviceMotion.ts
+
+utils/
+│
+└── calculateEvent.ts
+```
+
+---
+
+# ⚙️ Architecture
+
+```
+User
+
+↓
+
+Home Screen
+
+↓
+
+Start Drive
+
+↓
+
+Device Motion Hook
+
+↓
+
+Sensor Data
+
+↓
+
+Event Detection
+
+↓
+
+Score Calculation
+
+↓
+
+Summary Screen
+
+↓
+
+History
+```
+
+---
+
+# 📡 Sensor Integration
+
+The application uses **Expo DeviceMotion** which internally provides:
+
+- Accelerometer
+- Gyroscope
+- Device Motion
+
+The sensor subscription lifecycle is:
+
+```
+Start Drive
+
+↓
+
+Check Sensor Availability
+
+↓
+
+Set Update Interval
+
+↓
+
+Subscribe
+
+↓
+
+Receive Motion Data
+
+↓
+
+Detect Events
+
+↓
+
+End Drive
+
+↓
+
+Cleanup Subscription
+```
+
+---
+
+# 🧮 Event Detection Flow
+
+```
+Device Motion
+
+↓
+
+Motion Data
+
+↓
+
+calculateEvent()
+
+↓
+
+Driving Event
+
+↓
+
+Update Score
+
+↓
+
+Update UI
+```
+
+---
+
+# 📈 Future Improvements
+
+- GPS Route Tracking
+- Route Replay
+- Event Timeline
+- AI Driving Feedback
+- Heatmaps
+- Better Motion Filtering
+- Historical Analytics
+- Cloud Backup
+- Authentication
+- Backend Integration
+
+---
+
+# 🚀 Getting Started
+
+Clone the repository
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start Expo
+
+```bash
+npx expo start
+```
+
+Run on Android
+
+```bash
+npx expo run:android
+```
+
+or scan the QR code using **Expo Go**.
+
+---
+
+# 📌 Assignment Objectives Covered
+
+- ✅ Device Motion Integration
+- ✅ Accelerometer
+- ✅ Gyroscope
+- ✅ Real-time Sensor Collection
+- ✅ Event Detection
+- ✅ Driving Score Calculation
+- ✅ Driving Session Summary
+- ✅ Driving History
+- ✅ Clean Code Structure
+- ✅ Minimal UI
+- ✅ Battery Friendly Sensor Lifecycle
+
+---
+
+# 📄 Notes
+
+This project was developed as part of a mobile application assignment to demonstrate the practical use of smartphone sensors for driving behavior analysis. The implementation focuses on clean architecture, sensor handling, event detection, and user experience while keeping the overall design simple and maintainable.
