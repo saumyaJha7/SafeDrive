@@ -329,25 +329,3 @@ npx expo run:android
 ```
 
 or scan the QR code using **Expo Go**.
-
----
-
-# 📌 Assignment Objectives Covered
-
-- ✅ Device Motion Integration
-- ✅ Accelerometer
-- ✅ Gyroscope
-- ✅ Real-time Sensor Collection
-- ✅ Event Detection
-- ✅ Driving Score Calculation
-- ✅ Driving Session Summary
-- ✅ Driving History
-- ✅ Clean Code Structure
-- ✅ Minimal UI
-- ✅ Battery Friendly Sensor Lifecycle
-
----
-
-# 📄 Notes
-
-This project was developed as part of a mobile application assignment to demonstrate the practical use of smartphone sensors for driving behavior analysis. The implementation focuses on clean architecture, sensor handling, event detection, and user experience while keeping the overall design simple and maintainable.
