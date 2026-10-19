@@ -1,4 +1,4 @@
-# 🚗 SafeDrive
+# SafeDrive
 
 A mobile application built with **React Native (Expo)** that analyzes a user's driving behavior using the device's motion sensors and generates a **Driving Safety Score**.
 
